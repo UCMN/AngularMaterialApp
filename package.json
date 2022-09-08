@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href https://github.com/UCMN/AngularMaterialApp/",
+    "build": "ng build --base-href https://ucmn.github.io/AngularMaterialApp/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
