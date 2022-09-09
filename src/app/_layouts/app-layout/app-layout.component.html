@@ -4,7 +4,7 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>
-      <img id="logo" src="assets/Image/BlickleLogo.jpg" />
+      <img alt="Blickle Logo" id="logo" src="assets/Image/BlickleLogo.jpg" />
     </mat-toolbar>
     <mat-nav-list>
       <a 
@@ -20,6 +20,15 @@
       >
         Kontakt
       </a>
+
+      <a 
+        mat-list-item 
+        *ngFor="let project of projects; let i = index" 
+        [routerLink]="['details', i]" 
+        routerLinkActive='navigation-active'
+      >
+        {{project.name}}
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -32,7 +41,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>AngularMaterialApp</span>
+      <h1><b>AngularMaterialApp</b></h1>
     </mat-toolbar>
     <!-- Add content here -->
     <router-outlet></router-outlet>

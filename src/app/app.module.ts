@@ -8,6 +8,10 @@ import { SharedModule } from './Shared/shared.module';
 import { AppLayoutComponent } from './_layouts/app-layout/app-layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContactComponent } from './contact/contact.component';
+import { DetailsComponent } from './details/details.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -17,13 +21,21 @@ import { ContactComponent } from './contact/contact.component';
     AppComponent,
     AppLayoutComponent,
     DashboardComponent,
-    ContactComponent
+    ContactComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
